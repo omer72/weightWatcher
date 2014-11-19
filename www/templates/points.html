@@ -1,0 +1,30 @@
+
+<ion-header-bar class="bar-positive">
+    <h1 class="title">נקודות</h1>
+    <div class="button" ng-click="scrollBottom()">
+      גלול לסוף הרשימה
+    </div>
+  </ion-header-bar>
+  <ion-header-bar class="bar-light bar-subheader">
+    <input type="search"
+      placeholder="חפש מוצרים..."
+      ng-model="search"
+      ng-focus="searchFocused = true"
+      ng-blur="searchFocused = false"
+      ng-change="scrollTop()">
+    <button ng-if="search.length"
+      class="button button-icon ion-android-close input-button"
+      ng-click="clearSearch()">
+    </button>
+  </ion-header-bar>
+  <ion-content>
+    <div class="list">
+      <li class="item my-item"
+        collection-repeat="item in getProducts()"
+        collection-item-height=45
+        collection-item-width=getItemWidth()>
+        <h2>{{item.name}}</h2>
+        <p>נקודות : {{item.points}}</p>
+      </li>
+    </div>
+  </ion-content>
