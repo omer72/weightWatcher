@@ -17,7 +17,18 @@ angular.module('starter.controllers', [])
   $scope.friend = Friends.get($stateParams.friendId);
 })
 
-.controller('AccountCtrl', function($scope) {
+.controller('CalcCtrl', function($scope) {
+    $scope.calcValues =  {};
+  $scope.calculatePP = function() {
+    var protein = $scope.calcValues.protein;
+    var carbs = $scope.calcValues.carbs;
+    var fat = $scope.calcValues.fat;
+    var fiber = $scope.calcValues.fiber;
+    var pts = (protein / 10.94) + (carbs / 9.17) + (fat/3.89)- (fiber / 12.49);
+    $scope.calcValues.result = Math.round(pts);
+  }
+
+
 })
 
 .controller('PointsCtrl', function($scope, Points, $ionicLoading,$ionicScrollDelegate) {

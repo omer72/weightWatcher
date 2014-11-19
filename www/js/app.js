@@ -35,6 +35,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       templateUrl:"templates/points.html",
       controller:'PointsCtrl'
     })
+
+      .state('calc',{
+          url:'/calc',
+          templateUrl:"templates/calc.html",
+          controller:'CalcCtrl'
+      })
     ;
 
   // if none of the above states are matched, use this as the fallback
