@@ -1,39 +1,40 @@
+
 <ion-view title="מחשבון">
-    <ion-content padding="true" class="has-header has-footer">
-        <div class="list" style="text-align: right">
+  <ion-content class="has-header">
+    <div class="list card"  style="text-align: right; padding-right:10px">
             <div class="item item-divider">מחשבון</div>
             <div class="item item-body">
                 <form >
                     <label class="item item-input" name="fat">
-                        <input type="number" ng-model="calcValues.fat">
                         <span class="input-label">(שומן (גרם</span>
-
+                        <input type="number" ng-model="calcValues.fat">
                     </label>
                     <label class="item item-input" name="carbs">
-                        <input type="number" ng-model="calcValues.carbs">
                         <span class="input-label">(פחממות (גרם</span>
+                        <input type="number" ng-model="calcValues.carbs">
                     </label>
                     <label class="item item-input" name="fiber">
-                        <input type="number" ng-model="calcValues.fiber">
                         <span class="input-label">(סיבים (גרם</span>
+                        <input type="number" ng-model="calcValues.fiber">   
                     </label>
                     <label class="item item-input" name="protein">
-                        <input type="number" ng-model="calcValues.protein">
                         <span class="input-label">(פרוטאין (גרם</span>
+                        <input type="number" ng-model="calcValues.protein">    
                     </label>
                 </form>
                 <div class="button-bar">
-                    <button class="button button-positive button-block">נקה</button>
+                    <button class="button button-positive button-block" ng-click="reset()">נקה</button>
                     <button class="button button-positive button-block" ng-click="calculatePP()">חשב</button>
 
                 </div>
                 <div>
-                    <p>
-                        נקודות :
-         {{calcValues.result}}
+                    <p> {{calcValues.result}}
+                        :נקודות
+        
                     </p>
                 </div>
             </div>
         </div>
-    </ion-content>
+  </ion-content>
 </ion-view>
+
