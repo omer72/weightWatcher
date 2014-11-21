@@ -3,9 +3,8 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-// 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -22,29 +21,36 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
-
-  // Ionic uses AngularUI Router which uses the concept of states
-  // Learn more here: https://github.com/angular-ui/ui-router
-  // Set up the various states which the app can be in.
-  // Each state's controller can be found in controllers.js
   $stateProvider
 
-    // setup an abstract state for the tabs directive
-    .state ('points',{
-      url:"/points",
-      templateUrl:"templates/points.html",
-      controller:'PointsCtrl'
+    .state('app', {
+      url: "/app",
+      abstract: true,
+      templateUrl: "templates/menu.html",
+      controller: 'AppCtrl'
     })
 
-      .state('calc',{
-          url:'/calc',
-          templateUrl:"templates/calc.html",
-          controller:'CalcCtrl'
-      })
+    .state('app.calc', {
+      url: "/calc",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/calc.html",
+          controller: 'CalcCtrl'
+        }
+      }
+    })
+
+    .state('app.points', {
+      url: "/points",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/points.html",
+          controller:'PointsCtrl'
+        }
+      }
+    })
     ;
-
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/points');
-
+  $urlRouterProvider.otherwise('/app/points');
 });
 
